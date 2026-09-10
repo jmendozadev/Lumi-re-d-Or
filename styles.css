@@ -336,6 +336,24 @@ main small {
     cursor: url("cursor.png"), auto;
 }
 
+
+.title-hero-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.title-hero-card h1 {
+    margin: 0;
+}
+
+.title-hero-card img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
 /* =========================================================
    SECTION
    ========================================================= */
@@ -1092,6 +1110,15 @@ footer {
 
 @media (max-width: 700px) {
 
+    .title-hero-card {
+        gap: 12px;
+    }
+
+    .title-hero-card img {
+        width: 62px;
+        height: 62px;
+    }
+
     body {
         background-attachment: scroll;
     }
@@ -1199,9 +1226,8 @@ footer {
     }
 
     .hero h1 {
-        font-size: clamp(34px, 10vw, 42px);
+        font-size: clamp(40px, 16vw, 48px);
         letter-spacing: -.5px;
-        margin-bottom: 14px;
     }
 
     .hero p {
