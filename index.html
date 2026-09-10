@@ -1206,6 +1206,60 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
+    // =========================================================
+    // MENÚ HAMBURGUESA
+    // =========================================================
+    
+    const menuToggle = document.getElementById("menuToggle");
+    const sidebar = document.querySelector(".sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
+    
+    function openMenu() {
+        sidebar.classList.add("open");
+        sidebarOverlay.classList.add("open");
+        menuToggle.innerHTML = '<i class="bi bi-x-lg"></i>';
+        menuToggle.setAttribute("aria-label", "Cerrar menú");
+    }
+    
+    function closeMenu() {
+        sidebar.classList.remove("open");
+        sidebarOverlay.classList.remove("open");
+        menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+    }
+    
+    menuToggle.addEventListener("click", () => {
+        if (sidebar.classList.contains("open")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    
+    sidebarOverlay.addEventListener("click", closeMenu);
+    
+    
+    // Cerrar el menú al seleccionar una sección
+    document.querySelectorAll(".sidebar .nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth <= 900) {
+                closeMenu();
+            }
+        });
+    });
+    
+    
+    // Si se cambia de móvil a escritorio,
+    // nos aseguramos de limpiar el estado del menú.
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            sidebar.classList.remove("open");
+            sidebarOverlay.classList.remove("open");
+            menuToggle.innerHTML = '<i class="bi bi-list"></i>';
+            menuToggle.setAttribute("aria-label", "Abrir menú");
+        }
+    });
+
 </script>
 
 </body>
